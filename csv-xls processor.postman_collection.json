@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "09e8c389-050d-4c0b-91e8-90e3e4fb5b7f",
+		"name": "FIle Upload Processor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11715847"
+	},
+	"item": [
+		{
+			"name": "Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"description": "csv",
+							"type": "file",
+							"src": "/Users/thorn/AIBODIA/projects/kshop/csv-processor/products_1000_2025-01-08T07-16-10-217Z.csv",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"description": "excel",
+							"type": "file",
+							"src": "/Users/thorn/AIBODIA/projects/kshop/csv-processor/products_10000_2025-01-08T08-47-25-606Z.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Worker csv",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/job/:jobid?worker=csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"job",
+						":jobid"
+					],
+					"query": [
+						{
+							"key": "worker",
+							"value": "csv"
+						}
+					],
+					"variable": [
+						{
+							"key": "jobid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Worker excel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/job/:jobid?worker=excel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"job",
+						":jobid"
+					],
+					"query": [
+						{
+							"key": "worker",
+							"value": "excel"
+						}
+					],
+					"variable": [
+						{
+							"key": "jobid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
