@@ -1,0 +1,21 @@
+{
+  "name": "csv-processor",
+  "version": "1.0.0",
+  "scripts": {
+    "start:api": "node src/api/app.js",
+    "start:worker": "node src/worker/worker.js",
+    "start:monitor": "node src/monitor/monitor.js"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.3.0",
+    "axios": "^0.21.1",
+    "bull": "^3.22.0",
+    "cors": "^2.8.5",
+    "csv-parse": "^4.16.3",
+    "express": "^4.21.2",
+    "express-rate-limit": "^5.3.0",
+    "multer": "^1.4.2",
+    "redis": "^3.1.2",
+    "winston": "^3.17.0"
+  }
+}

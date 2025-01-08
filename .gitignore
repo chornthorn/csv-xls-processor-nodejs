@@ -1,0 +1,10 @@
+/logs
+/uploads
+/node_modules
+
+# .DS_Store
+# very .DS_Store file in any folder
+*.DS_Store
+
+# every that start prod
+prod*
