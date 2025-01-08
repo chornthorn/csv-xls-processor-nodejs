@@ -5,7 +5,9 @@
     "start:api": "node src/api/app.js",
     "start:worker": "node src/worker/worker.js",
     "start:worker2": "node src/worker/worker_2.js",
-    "start:monitor": "node src/monitor/monitor.js"
+    "start:monitor": "node src/monitor/monitor.js",
+    "generate:csv": "node src/utils/generate_csv.js",
+    "generate:excel": "node src/utils/generate_excel.js"
   },
   "dependencies": {
     "@faker-js/faker": "^9.3.0",
