@@ -7,7 +7,9 @@
     "start:worker2": "node src/worker/worker_2.js",
     "start:monitor": "node src/monitor/monitor.js",
     "generate:csv": "node src/utils/generate_csv.js",
-    "generate:excel": "node src/utils/generate_excel.js"
+    "generate:excel": "node src/utils/generate_excel.js",
+    "generate:csv:multiple": "node src/utils/generate_csv_multiple.js",
+    "generate:excel:multiple": "node src/utils/generate_excel_multiple.js"
   },
   "dependencies": {
     "@faker-js/faker": "^9.3.0",
