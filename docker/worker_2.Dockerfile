@@ -14,4 +14,4 @@ RUN npm install --production
 # Copy source
 COPY . .
 
-CMD ["npm", "run", "start:worker"]
+CMD ["npm", "run", "start:worker2"]

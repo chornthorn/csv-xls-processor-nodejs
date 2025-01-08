@@ -1,12 +1,10 @@
-version: "3.8"
-
 services:
   redis:
     image: redis:alpine
     ports:
       - "6379:6379"
-    volumes:
-      - redis-data:/data
+    networks:
+      - app-network
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -22,47 +20,53 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
       - NODE_ENV=production
-      - API_ENDPOINT=http://myecom.api.server.com
     volumes:
       - ./uploads:/app/uploads
       - ./logs:/app/logs
+    networks:
+      - app-network
     depends_on:
       redis:
         condition: service_healthy
 
-  worker:
+  csv-worker:
     build:
       context: .
       dockerfile: docker/worker.Dockerfile
     environment:
       - REDIS_URL=redis://redis:6379
       - NODE_ENV=production
-      - API_ENDPOINT=http://myecom.api.server.com
+      - WORKER_TYPE=csv
     volumes:
       - ./uploads:/app/uploads
       - ./logs:/app/logs
+    networks:
+      - app-network
     depends_on:
       redis:
         condition: service_healthy
 
-  monitor:
+  excel-worker:
     build:
       context: .
-      dockerfile: docker/monitor.Dockerfile
-    ports:
-      - "3001:3001"
+      dockerfile: docker/worker_2.Dockerfile
     environment:
       - REDIS_URL=redis://redis:6379
       - NODE_ENV=production
+      - WORKER_TYPE=excel
     volumes:
+      - ./uploads:/app/uploads
       - ./logs:/app/logs
+    networks:
+      - app-network
     depends_on:
       redis:
         condition: service_healthy
 
-volumes:
-  redis-data:
-
 networks:
-  default:
+  app-network:
     driver: bridge
+
+volumes:
+  uploads:
+  logs:
